@@ -17,6 +17,10 @@ app.get('/',function(req,res){
   res.render('index.html');
 })
 
+app.get('/login', function(req, res){
+  res.send('Login Route');
+})
+
 io.on('connection', (socket) => {
   console.log('New user connected');
 
