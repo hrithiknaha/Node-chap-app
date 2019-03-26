@@ -21,6 +21,10 @@ app.get('/login', function(req, res){
   res.send('Login Route');
 })
 
+app.get('/regitser', function(req, res){
+  res.send('Register Route');
+})
+
 io.on('connection', (socket) => {
   console.log('New user connected');
 
