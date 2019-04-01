@@ -13,17 +13,17 @@ var io = socketIO(server);
 
 app.use(express.static(publicPath));
 
-app.get('/',function(req,res){
-  res.render('index.html');
-})
+// app.get('/',function(req,res){
+//   res.render('index.html');
+// })
 
-app.get('/login', function(req, res){
-  res.send('Login Route');
-})
+// app.get('/login', function(req, res){
+//   res.send('Login Route');
+// })
 
-app.get('/regitser', function(req, res){
-  res.send('Register Route');
-})
+// app.get('/regitser', function(req, res){
+//   res.send('Register Route');
+// })
 
 io.on('connection', (socket) => {
   console.log('New user connected');
@@ -32,13 +32,24 @@ io.on('connection', (socket) => {
     console.log('User was disconnected');
   });
 
-  socket.on('createMessage', function(message){
+  socket.on('client', function(message){
       console.log(message);
-      io.emit('newMessage',{
-        from : message.from,
-        text : message.text,
-        createdAt: new Date().getTime()
-      })
+  })
+
+  socket.emit('server',{
+    name: 'Hrithik Naha',
+    dateCreated: new Date().toDateString(),
+    text: 'Sending messgae from server to client'
+  })
+
+  socket.emit('server',{
+    name: 'Testing Part two',
+    dateCreated: new Date().toDateString(),
+    text: 'Sending messgae from server to client'
+  })
+
+  socket.emit('server',{
+    text: 'Lorem'
   })
 });
 
