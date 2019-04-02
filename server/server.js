@@ -38,6 +38,7 @@ io.on('connection', (socket) => {
 
   socket.emit('server',{
     name: 'Hrithik Naha',
+    subject: 'text',
     dateCreated: new Date().toDateString(),
     text: 'Sending messgae from server to client'
   })
